@@ -4,4 +4,8 @@ WORKDIR /app
 
 COPY . .
 
-CMD ["python", "main.py", "--help"]
+ENV PYTHONUNBUFFERED=1
+
+ENTRYPOINT ["python", "main.py"]
+
+CMD ["-f", "/data/report.json", "--menu"]
