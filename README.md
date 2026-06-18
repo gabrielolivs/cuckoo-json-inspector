@@ -25,6 +25,10 @@ Esta ferramenta busca reduzir esse esforço por meio de uma interface de linha d
 - Python 3.11+
 - Docker opcional
 
+## Documentação
+
+- [Como executar com Docker](instalacao.md)
+
 ## Execução local
 
 ```bash
