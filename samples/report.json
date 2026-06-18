@@ -1,0 +1,49 @@
+{
+  "target": {
+    "file": {
+      "name": "malware_sample.exe",
+      "type": "PE32 executable",
+      "sha256": "abc123fakehash"
+    }
+  },
+  "behavior": {
+    "processes": [
+      {
+        "pid": 1234,
+        "ppid": 1000,
+        "process_name": "malware_sample.exe",
+        "calls": [
+          {
+            "api": "CreateFileW",
+            "category": "filesystem",
+            "arguments": {
+              "filepath": "C:\\Users\\User\\AppData\\malicious.exe"
+            }
+          },
+          {
+            "api": "RegSetValueExW",
+            "category": "registry",
+            "arguments": {
+              "key": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "network": {
+    "dns": [
+      {
+        "request": "malicious-domain.test"
+      }
+    ],
+    "http": []
+  },
+  "signatures": [
+    {
+      "name": "creates_autorun_key",
+      "description": "Creates a registry autorun key",
+      "severity": 3
+    }
+  ]
+}
